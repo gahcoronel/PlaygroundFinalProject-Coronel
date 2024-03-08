@@ -1,0 +1,12 @@
+{% extends 'Login/base_login.html' %}
+
+{% block block_01 %}
+    
+    <h1>Registro</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ myform.as_p }}
+        <button type="submit">Registrate!</button>
+    </form>
+
+{% endblock block_01 %}

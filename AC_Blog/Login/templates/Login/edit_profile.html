@@ -1,0 +1,23 @@
+{% extends 'Login/base_login.html' %}
+
+{% block block_01 %}
+
+        <h1>Formulario - Editar Perfil</h1>
+        <h1>Usuario: {{usuario}}</h1>
+
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                {{ myform }}
+            </table>
+
+            <input class="btn btn-primary" type="submit", value="Enviar">
+
+        </form>  
+
+        <button type='button'>
+            <a class="navbar-brand" href="{% url 'Change_Password' %}">Cambiar contrasenia</a>
+        </button>
+
+
+{% endblock block_01 %}

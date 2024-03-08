@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Publicaciones - Playground Ariel Coronel</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'Home/css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">Blog de Artículos</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href={% url "ArtCreate" %}>Nuevo Artículo</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url "ArtList" %}>Ver Artículos</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url "ArtsSearch" %}>Buscar Artículos</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url "about" %}>Acerca del proyecto</a></li>
+                        {% if not request.user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="login/">Ingresar</a></li>
+                        {% else %}
+                            {% if request.user.avatar %}
+                                <img src="{{request.user.avatar.imagen.url}}" alt="" height="40px">
+                            {% endif %}
+                            <li class="nav-item"><a class="nav-link active" href={% url "Login" %}>{{request.user.username}}</a></li>
+                            </form>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page header with logo and tagline-->
+
+        <!-- Page content-->
+
+                <!-- Insert block_01 -->
+                {% block    block_01 %}
+                
+                {% endblock block_01 %}
+
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Playground Final Project - Ariel Coronel 2024</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

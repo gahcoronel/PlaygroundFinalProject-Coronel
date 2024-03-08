@@ -1,0 +1,47 @@
+{% extends 'Home/base_home.html' %}
+
+<!-- Insert block_01 -->
+{% block    block_01 %}
+<p> </p>
+        <!-- Page content-->
+        <div class="container">
+            <div class="row">
+                {% if articulos %}
+                {% for articulo in articulos %}
+                <!-- Blog entries-->
+                <div class="col-lg-14">
+                    <!-- Nested row for non-featured blog posts-->
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <!-- Blog post-->
+                            <div class="card mb-4">
+                                {% if articulo.imagen %}
+                                <a href="{% url 'ArtDetail' articulo.pk %}"><img class="card-img-top" src="{{articulo.imagen.url}}" alt="..." /></a>
+                                {% else %}
+                                <p>Sin imagen.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <!-- Blog post-->
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <div class="small text-muted">Publicado {{articulo.fecha_creacion}} por {{articulo.autor}}</div>
+                                    <h2 class="card-title h4">{{articulo.titulo}}</h2>
+                                    <p class="card-text">{{articulo.subtitulo}}</p>
+                                    <a class="btn btn-primary" href="{% url 'ArtDetail' articulo.pk %}">Ver</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <p>No se encontraron publicaciones.</p>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+
+{% endblock block_01 %}
