@@ -49,11 +49,10 @@ def art_list(request):
 def art_search_title(request):
     titulo = request.GET.get('titulo', None)
     if titulo:
-        articulos = models.Articulo.objects.filter(titulo__icontains=titulo)
+        articulos = models.Articulo.objects.filter(titulo__icontains=titulo).order_by('-id')
     else:
-        articulos = models.Articulo.objects.all()
+        articulos = models.Articulo.objects.all().order_by('-id')
         
-    articulos = models.Articulo.objects.order_by('-id')
     form_search_art = forms.FormSearchArts()
     
     return render(request, 'Home/art_search_title.html', 
