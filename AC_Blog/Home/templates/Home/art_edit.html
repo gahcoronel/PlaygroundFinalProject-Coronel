@@ -2,6 +2,8 @@
 
 {% block    block_01 %}
 
+    {% if request.user.is_authenticated and articulo.autor == request.user %}
+
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
@@ -20,5 +22,19 @@
             </div>
         </div>
     </div>
+
+    {% else %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+            <p> </p>
+            <h2>Debe estar logueado y ser el autor del artículo para poder editarlo o borrarlo.</h2>
+            <p> </p>
+            </div>
+        </div>
+    </div>
+
+    {% endif%}
 
 {% endblock block_01 %}

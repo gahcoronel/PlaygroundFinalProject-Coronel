@@ -61,20 +61,6 @@ def edit_profile(request):
         
     return render(request, "Login/edit_profile.html", {"myform": myform, "usuario": usuario})
 
-# def edit_profile(request):
-#     usuario = request.user
-#     if request.method == 'POST':
-#         myform = forms.UserEditForm(request.POST, request.FILES, instance=request.user)
-#         if myform.is_valid():
-#             if myform.cleaned_data.get('imagen'):
-#                 usuario.avatar.imagen = myform.cleaned_data.get('imagen')
-#                 usuario.avatar.save()
-#             myform.save()
-#             return render(request, "Login/login.html")
-#     else:
-#         myform = forms.UserEditForm(initial={'imagen': usuario.avatar.imagen}, instance=request.user)
-#     return render(request, "Login/edit_profile.html", {"myform": myform, "usuario": usuario})
-
 class change_password(LoginRequiredMixin, PasswordChangeView):
     template_name = 'Login/change_password.html'
     success_url = reverse_lazy('Login')

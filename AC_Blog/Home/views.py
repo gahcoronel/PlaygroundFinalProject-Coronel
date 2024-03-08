@@ -53,7 +53,7 @@ def art_search_title(request):
     else:
         articulos = models.Articulo.objects.all()
         
-    # articulos = models.Articulo.order_by('id')
+    articulos = models.Articulo.objects.order_by('-id')
     form_search_art = forms.FormSearchArts()
     
     return render(request, 'Home/art_search_title.html', 

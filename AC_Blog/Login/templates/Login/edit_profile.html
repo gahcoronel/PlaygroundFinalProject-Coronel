@@ -2,22 +2,28 @@
 
 {% block block_01 %}
 
-        <h1>Formulario - Editar Perfil</h1>
-        <h1>Usuario: {{usuario}}</h1>
-
-        <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <table>
-                {{ myform }}
-            </table>
-
-            <input class="btn btn-primary" type="submit", value="Enviar">
-
-        </form>  
-
-        <button type='button'>
-            <a class="navbar-brand" href="{% url 'Change_Password' %}">Cambiar contrasenia</a>
-        </button>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <p> </p>
+                <h2>Editar Perfil</h2>
+                <h3>Usuario: {{usuario}}</h3>
+                <p> </p>
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table >
+                        {{ myform }}
+                        <p> </p>
+                    </table>
+                    <p> </p>
+                    <button class="submit btn-outline-primary fst-italic"></i> Confirmar cambios</button>
+                    <p> </p>
+                    <button type='button'>
+                        <a class="navbar-brand" href="{% url 'Change_Password' %}">Cambiar contraseña</a>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 
 {% endblock block_01 %}

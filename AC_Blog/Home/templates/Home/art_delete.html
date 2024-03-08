@@ -2,30 +2,37 @@
 
 {% block    block_01 %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8">
-        <p> </p>
-        <h2>Eliminar Artículo</h2>
-        <p> </p>
-        <form action="" method="POST">
-            {% csrf_token %}
-            ¿Estas seguro que deseas borrar el siguiente artículo?
-            <p> <h3>{{articulo.titulo}}</h3></p>
-            <button class="submit btn-outline-primary fst-italic"></i> Eliminar</button>
+    {% if request.user.is_authenticated and articulo.autor == request.user %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
             <p> </p>
-        </form>
+            <h2>Eliminar Artículo</h2>
+            <p> </p>
+            <form action="" method="POST">
+                {% csrf_token %}
+                ¿Estas seguro que deseas borrar el siguiente artículo?
+                <p> <h3>{{articulo.titulo}}</h3></p>
+                <button class="submit btn-outline-primary fst-italic"></i> Eliminar</button>
+                <p> </p>
+            </form>
+            </div>
         </div>
     </div>
-</div>
 
+    {% else %}
 
-    {% comment %} <h1>Borrar Artículo</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+            <p> </p>
+            <h2>Debe estar logueado y ser el autor del artículo para poder editarlo o borrarlo.</h2>
+            <p> </p>
+            </div>
+        </div>
+    </div>
 
-    <form action="" method="POST">
-        {% csrf_token %}
-        Estas seguro que deseas borrar el artículo {{articulo.titulo}}
-        <input type="submit" value="Eliminar">
-    </form> {% endcomment %}
+    {% endif%}
 
 {% endblock block_01 %}
