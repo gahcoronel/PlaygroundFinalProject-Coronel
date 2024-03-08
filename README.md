@@ -11,6 +11,11 @@
 
   Solo el usuario que creó un artículo podrá borrarlo o editarlo. Estas acciones están disponibles en la vista en detalle de cada artículo como botones debajo del subtítulo (solo aparecen cuando el autor del artículo está logueado).
 
+  ### Usuarios
+  Para acceder al la app de login se hace click en Ingresar en la barra de navegacion, o si hay un usuario ya logueado haciendo click en el nombre de ususario también en la barra de navegación.
+  
   El superuser puede hacer todo lo que hacen los ususarios comunes. Aparte puede accder al panel de admin desde la página de registro. El link para ingresar al módulo de admin no aparace para los usuarios comunes.
+
+
   
  
