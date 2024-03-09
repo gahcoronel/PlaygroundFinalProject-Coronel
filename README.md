@@ -15,7 +15,9 @@
   Para acceder al la app de login se hace click en Ingresar en la barra de navegacion, o si hay un usuario ya logueado haciendo click en el nombre de ususario también en la barra de navegación.
   
   El superuser puede hacer todo lo que hacen los ususarios comunes. Aparte puede accder al panel de admin desde la página de registro. El link para ingresar al módulo de admin no aparace para los usuarios comunes.
-
+  
+  ### Test
+  En test.py se encuentran los 5 unit test definidos para esta aplicación. Los mismos fueron corridos con éxito!
 
   
  
