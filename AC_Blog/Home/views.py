@@ -48,6 +48,7 @@ def art_list(request):
 
 def art_search_title(request):
     titulo = request.GET.get('titulo', None)
+    print(titulo)
     if titulo:
         articulos = models.Articulo.objects.filter(titulo__icontains=titulo).order_by('-id')
     else:
@@ -59,11 +60,16 @@ def art_search_title(request):
                   { 'form_search_art' : form_search_art, 'articulos' : articulos }
                   )
 
+def art_list_author(request,pk):
+    autor = pk
+    print(autor)
+    articulos = models.Articulo.objects.filter(autor=autor).order_by('-id')
+    articulo = articulos[0]
+    print(articulo)
+    return render(request, 'Home/art_list_autor.html', { 'articulos' : articulos , 'articulo': articulo })
 
-
-
-
-
-
-    
-    
+def my_arts(request):
+    autor = request.user
+    print(autor)
+    articulos = models.Articulo.objects.filter(autor=autor).order_by('-id')
+    return render(request, 'Home/art_list_autor.html', { 'articulos' : articulos , 'autor': autor })

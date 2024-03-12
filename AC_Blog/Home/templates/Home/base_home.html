@@ -25,12 +25,13 @@
                         <li class="nav-item"><a class="nav-link" href={% url "ArtsSearch" %}>Buscar Artículos</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url "about" %}>Acerca del proyecto</a></li>
                         {% if not request.user.is_authenticated %}
-                            <li class="nav-item"><a class="nav-link active" href="login/">Ingresar</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="/login/">Ingresar</a></li>
                         {% else %}
                             {% if request.user.avatar %}
                                 <img src="{{request.user.avatar.imagen.url}}" alt="" height="40px">
                             {% endif %}
                             <li class="nav-item"><a class="nav-link active" href={% url "Login" %}>{{request.user.username}}</a></li>
+                            <li class="nav-item"><a class="nav-link active" href={% url "MyArts" %}>Mis artículos</a></li>
                             </form>
                         {% endif %}
                     </ul>

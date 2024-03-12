@@ -16,6 +16,9 @@ urlpatterns = [
     path('ArtDetail/<pk>/ArtDelete', views.ArtDeleteView.as_view(), name="ArtDelete"),
     path('ArtList', views.art_list, name="ArtList"),
     path('ArtsSearch', views.art_search_title, name="ArtsSearch"),
+    path('ArtDetail/<pk>/ArtListAutor', views.art_list_author, name="ArtListAutor"),
+    path('MyArts', views.my_arts, name="MyArts"),
+    
 ]
 
 urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
