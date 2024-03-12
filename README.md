@@ -11,6 +11,8 @@
 
   Solo el usuario que creó un artículo podrá borrarlo o editarlo. Estas acciones están disponibles en la vista en detalle de cada artículo como botones debajo del subtítulo (solo aparecen cuando el autor del artículo está logueado).
 
+  Funcionalidades de filtrar publicaciones por título (buscar artículos). También por autor, ya sea desde el detalle del artículo, desde el listado general de articulos o desde la barra de navegación (mis artículos).
+
   ### Usuarios
   Para acceder al la app de login se hace click en Ingresar en la barra de navegacion, o si hay un usuario ya logueado haciendo click en el nombre de ususario también en la barra de navegación.
   
