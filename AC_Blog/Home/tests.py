@@ -1,5 +1,6 @@
 from django.test import TestCase, Client
 import datetime
+from datetime import date
 
 from Home.models import Articulo
 from django.urls import reverse
@@ -33,13 +34,17 @@ class EliminarArticuloTest(TestCase):
         """
         Verificar que creo adecuadamente la instancia de Articulo
         """
+        hoy = date.today()
+        date_year = hoy.year
+        date_month = hoy.month
+        date_day = hoy.day
         self.assertQuerysetEqual(Articulo.objects.filter(titulo__icontains="Artículo 001").values(), 
                                  [{'id': 1, 
                                    'titulo': 'Artículo 001', 
                                    'subtitulo': 'Artículo 001 ST', 
                                    'contenido': 'These two occurrences are not a coincidence.',
                                    'autor_id' : 1,
-                                   'fecha_creacion' : datetime.date(2024, 3, 9),
+                                   'fecha_creacion' : datetime.date(date_year, date_month, date_day),
                                    'imagen' : "",
                                    }])
     
@@ -67,13 +72,17 @@ class EliminarArticuloTest(TestCase):
         url = reverse('ArtDelete', args=[self.articulo.id])
         respuesta = self.client.post(url)
         self.assertEqual(respuesta.status_code, 302)
+        hoy = date.today()
+        date_year = hoy.year
+        date_month = hoy.month
+        date_day = hoy.day
         self.assertQuerysetEqual(Articulo.objects.filter(titulo__icontains="Artículo 001", subtitulo__icontains="Artículo 001 ST").values(), 
                                  [{'id': 1, 
                                    'titulo': 'Artículo 001', 
                                    'subtitulo': 'Artículo 001 ST', 
                                    'contenido': 'These two occurrences are not a coincidence.',
                                    'autor_id' : 1,
-                                   'fecha_creacion' : datetime.date(2024, 3, 9),
+                                   'fecha_creacion' : datetime.date(date_year, date_month, date_day),
                                    'imagen' : "",
                                    }])
     
