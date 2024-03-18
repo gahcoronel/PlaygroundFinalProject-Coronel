@@ -8,15 +8,13 @@
         <div class="row">
             <div class="col-lg-8">
             <p> </p>
-            <h2>Editar Artículo</h2>
+            <h2>Eliminar Artículo</h2>
             <p> </p>
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="" method="POST">
                 {% csrf_token %}
-                <table >
-                    {{form.as_p}}
-                </table>
-                <p> </p>
-                <button class="submit btn-outline-primary fst-italic"></i> Publicar cambios</button>
+                ¿Estas seguro que deseas borrar el siguiente artículo?
+                <p> <h3>{{articulo.titulo}}</h3></p>
+                <button class="submit btn-outline-primary fst-italic"></i> Eliminar</button>
                 <p> </p>
             </form>
             </div>

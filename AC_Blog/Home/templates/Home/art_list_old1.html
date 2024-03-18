@@ -2,15 +2,17 @@
 
 <!-- Insert block_01 -->
 {% block    block_01 %}
-
-                <!-- Blog entries-->
-                
-                <div class="col-lg-8">
-                    <!-- Nested row for non-featured blog posts-->
+<p> </p>
+        <!-- Page content-->
+        <div class="container">
+            <div class="row">
                 {% if articulos %}
-                {% for articulo in articulos %}    
+                {% for articulo in articulos %}
+                <!-- Blog entries-->
+                <div class="col-lg-14">
+                    <!-- Nested row for non-featured blog posts-->
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <!-- Blog post-->
                             <div class="card mb-4">
                                 {% if articulo.imagen %}
@@ -20,16 +22,13 @@
                                 {% endif %}
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-8">
                             <!-- Blog post-->
                             <div class="card mb-4">
                                 <div class="card-body">
                                     <div 
                                         class="small text-muted">Publicado {{articulo.fecha_creacion}} por
                                         <a class="badge bg-secondary text-decoration-none link-light" href="{% url 'ArtListAutor' articulo.autor.pk %}">{{articulo.autor}}</a>
-                                        {% if articulo.autor.avatar %}
-                                        <img class="img rounded-circle" src="{{articulo.autor.avatar.imagen.url}}" alt="" height="30px">
-                                        {% endif %}
                                     </div>
                                     <h2 class="card-title h4">{{articulo.titulo}}</h2>
                                     <p class="card-text">{{articulo.subtitulo}}</p>
@@ -37,21 +36,15 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
+                </div>
                 {% endfor %}
                 {% else %}
-
-                <!-- Blog entries-->
-                <div class="col-lg-8">
-                    <!-- Featured blog post-->
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <p>No se encontraron publicaciones.</p>
-                        </div>
-                    </div>
-                </div>
+                <p>No se encontraron publicaciones.</p>
                 {% endif %}
-
                 </div>
+            </div>
+        </div>
 
-{% endblock block_01 %}       
+{% endblock block_01 %}

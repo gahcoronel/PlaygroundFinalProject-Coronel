@@ -1,0 +1,26 @@
+{% extends 'Home/base_home.html' %}
+
+{% block    block_01 %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+            <p> </p>
+            <h2>Crear Artículo</h2>
+            <p> </p>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table >
+                    {{form.as_p}}
+                </table>
+                <p> </p>
+                <button class="submit btn-outline-primary fst-italic"></i> Publicar</button>
+                <p> </p>
+            </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock block_01 %}

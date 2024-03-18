@@ -1,26 +1,24 @@
+
 {% extends 'Home/base_home.html' %}
 
+<!-- Insert block_01 -->
 {% block    block_01 %}
 
-
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-            <p> </p>
-            <h2>Crear Artículo</h2>
-            <p> </p>
-            <form action="" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <table >
-                    {{form.as_p}}
-                </table>
-                <p> </p>
-                <button class="submit btn-outline-primary fst-italic"></i> Publicar</button>
-                <p> </p>
-            </form>
-            </div>
-        </div>
-    </div>
-
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <!-- Featured blog post-->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            Nombre de usuario:<h2 class="card-title h4">{{request.user.username}}</h2>
+                            <form action="" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <table >
+                                    {{ form.as_p }}
+                                </table>
+                                <button class="btn btn-primary"></i> Publicar </button>
+                            </form>         
+                        </div>
+                    </div>
+                </div>
 
 {% endblock block_01 %}

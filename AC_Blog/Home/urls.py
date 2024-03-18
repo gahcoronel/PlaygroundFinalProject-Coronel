@@ -7,7 +7,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.art_list, name='home'),
+    path('', views.home, name='home'),
     path('about', views.about, name='about'),
     
     path('ArtCreate', views.ArtCreateView.as_view(), name="ArtCreate"),

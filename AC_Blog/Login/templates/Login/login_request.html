@@ -1,11 +1,26 @@
-{% extends 'Login/base_login.html' %}
 
-{% block block_01 %}
-    <h1>Login</h1>
+{% extends 'Home/base_home.html' %}
 
-    <form action="" method="POST">
-        {% csrf_token %}
-            {{ myform.as_p }}
-        <button type="submit">Inciar sesion</button>
-    </form>
+<!-- Insert block_01 -->
+{% block    block_01 %}
+
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <!-- Featured blog post-->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <form action="" method="POST" >
+                                {% csrf_token %}
+                                <table >
+                                    {{ myform }}
+                                </table>
+                                <p> </p>
+                                <button class="btn btn-primary"></i> Inciar sesion</button>
+                            </form>  
+                            <p></p>
+                            <a class="btn btn-primary" href={% url "Register" %}>Registrarse</a>
+                        </div>
+                    </div>
+                </div>
+
 {% endblock block_01 %}

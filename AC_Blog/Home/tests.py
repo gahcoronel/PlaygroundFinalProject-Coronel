@@ -24,7 +24,7 @@ class EliminarArticuloTest(TestCase):
             subtitulo = "Artículo 001 ST", 
             contenido = "These two occurrences are not a coincidence.",
             autor_id = 1,
-            fecha_creacion = datetime.date(2024, 3, 9),
+            # fecha_creacion = datetime.date(2024, 3, 9), # no hace falta esta definicion ya que el tag es automático en la definición del modelo
             imagen         = "",
             )
         user = get_user_model()

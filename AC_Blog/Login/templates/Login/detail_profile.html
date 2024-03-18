@@ -1,0 +1,46 @@
+
+{% extends 'Home/base_home.html' %}
+
+<!-- Insert block_01 -->
+{% block    block_01 %}
+
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <!-- Nested row for non-featured blog posts-->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- Blog post-->
+                            <div class="card mb-4">
+                                {% if request.user.avatar %}
+                                    <img class="img-fluid rounded" src="{{request.user.avatar.imagen.url}}" alt="" >
+                                {% else %}
+                                    <p>Sin imagen.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <!-- Blog post-->
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    Nombre de usuario:<h2 class="card-title h4">{{request.user.username}}</h2>
+                                    Nombre:<p class="card-title h4"> {{request.user.first_name}}</p>  
+                                    Apellido:<p class="card-title h4"> {{request.user.last_name}}</p>  
+                                    email:<p class="card-title h4"> {{request.user.email}}</p>
+                                    <p></p>
+                                    <a class="btn btn-primary" href={% url "Edit_Profile" %}>Editar perfil</a>
+                                    <p></p>
+                                    {% if request.user.is_superuser %}
+                                        <a class="btn btn-danger" href="/admin/" target="_blank">Admin menu</a>
+                                    {% endif %}
+                                    <p></p>
+                                    <form method="post" action="{% url 'Logout' %}">
+                                        {% csrf_token %}
+                                        <button class="btn btn-warning" type="submit">Salir</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+{% endblock block_01 %}
