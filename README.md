@@ -5,7 +5,7 @@
   ### Publicaciones
   Para poder publicar un artículo es necesario estar logueado. 
 
-  Se puede acceder al detalle de un artículo desde el listado de artículos, con el botón Ver, o haciendo click en la foto.
+  Se puede acceder al detalle de un artículo desde el listado de artículos, haciendo click en el título o en la foto.
 
   Las publicaciones pueden incluir una imagen. La imagen se puede guardar al crear el artículo o luego al editarlo
 
