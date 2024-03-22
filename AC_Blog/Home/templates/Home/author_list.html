@@ -1,0 +1,47 @@
+
+{% extends 'Home/base_home.html' %}
+
+<!-- Insert block_01 -->
+{% block    block_01 %}
+
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <div class="row">
+                        {% for columna in autores %}
+                        <div class="col-lg-6">
+                            <!-- Featured blog post-->
+                            <div class="card mb-4">
+                                <div class="row">
+                                    <div class="col-lg-6">
+
+                                            <table>
+                                                <tr>
+                                                    <th><p class="card-text text-center">Autor</p></th>
+                                                    <th><p class="card-text text-center">Publicaciones</p></th>
+                                                    <th><p class="card-text text-center"></p></th>
+                                                </tr>
+                                                {% for name, cantidad, articulo in columna %} 
+                                                {% if articulo != 0 %}
+                                                <tr>
+                                                    <td><p class="card-text text-center">{{name}}</p></td>
+                                                    <td><p class="card-text text-center">{{cantidad}}</p></td>
+                                                    <td><a class="badge bg-secondary text-decoration-none link-light" href="{% url 'ArtListAutor' articulo.autor.pk %}">Ver</a></td>
+                                                </tr>
+                                                {% else %}
+                                                <tr>
+                                                    <td><p class="card-text text-center">{{name}}</p></td>
+                                                    <td><p class="card-text text-center">{{cantidad}}</p></td>
+                                                    <td><p class="card-text text-center">---</p></td>
+                                                </tr>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </table>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+{% endblock block_01 %}

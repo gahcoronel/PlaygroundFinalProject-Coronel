@@ -3,37 +3,39 @@
 <!-- Insert block_01 -->
 {% block    block_01 %}
 
-                <!-- Blog entries-->
+            <!-- Blog entries-->
                 
-                <div class="col-lg-8">
+            <div class="col-lg-8">
                     <!-- Nested row for non-featured blog posts-->
                 {% if articulos %}
                 {% for articulo in articulos %}    
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <!-- Blog post-->
                             <div class="card mb-4">
-                                {% if articulo.imagen %}
-                                <a href="{% url 'ArtDetail' articulo.pk %}"><img class="card-img-top" src="{{articulo.imagen.url}}" alt="..." /></a>
-                                {% else %}
-                                <p>Sin imagen.</p>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <!-- Blog post-->
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <div 
-                                        class="small text-muted">Publicado {{articulo.fecha_creacion}} por
-                                        <a class="badge bg-secondary text-decoration-none link-light" href="{% url 'ArtListAutor' articulo.autor.pk %}">{{articulo.autor}}</a>
-                                        {% if articulo.autor.avatar %}
-                                        <img class="img rounded-circle" src="{{articulo.autor.avatar.imagen.url}}" alt="" height="30px">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <!-- Blog post-->
+                                        {% if articulo.imagen %}
+                                        <a href="{% url 'ArtDetail' articulo.pk %}"><img class="card-img-top" src="{{articulo.imagen.url}}" alt="..." /></a>
+                                        {% else %}
+                                        <p>Sin imagen.</p>
                                         {% endif %}
                                     </div>
-                                    <h2 class="card-title h4">{{articulo.titulo}}</h2>
-                                    <p class="card-text">{{articulo.subtitulo}}</p>
-                                    <a class="btn btn-primary" href="{% url 'ArtDetail' articulo.pk %}">Ver</a>
+                                    <div class="col-lg-6">
+                                        <!-- Blog post-->
+                                        <div class="card-body">
+                                            <div 
+                                                class="small text-muted">Publicado {{articulo.fecha_creacion}} por
+                                                <a class="badge bg-secondary text-decoration-none link-light" href="{% url 'ArtListAutor' articulo.autor.pk %}">{{articulo.autor}}</a>
+                                                {% if articulo.autor.avatar %}
+                                                <img class="img rounded-circle" src="{{articulo.autor.avatar.imagen.url}}" alt="" height="30px">
+                                                {% endif %}
+                                            </div>
+                                            <a href="{% url 'ArtDetail' articulo.pk %}"><h2 class="card-title h4">{{articulo.titulo}}</h2></a>
+                                            <p class="card-text">{{articulo.subtitulo}}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +53,6 @@
                     </div>
                 </div>
                 {% endif %}
-
-                </div>
+            </div>
 
 {% endblock block_01 %}       

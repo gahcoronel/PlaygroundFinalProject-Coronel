@@ -5,11 +5,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse_lazy
+from django.contrib.auth.models import User
 
 
 def home(request):
     articulos = models.Articulo.objects.all().order_by('-id')
-    print(len(articulos))
     
     contexto = {}
     if len(articulos) != 0:
@@ -53,14 +53,14 @@ class ArtDetailView(DetailView):
     model = models.Articulo
     template_name = "Home/art_detail.html"
     
-    sw_t1 = 'Detalle de la publicación'
-    sw_st1 = f'Disfruta del contenido de este artículo.' 
-    extra_context={'sw_t1' : sw_t1 , 'sw_st1' : sw_st1}
+    extra_context = {}
+    extra_context['sw_t1'] = 'Detalle de la publicación'
+    extra_context['sw_st1'] = f'Disfruta del contenido de este artículo.'
     
 class ArtUpdateView(LoginRequiredMixin, UpdateView):
     model = models.Articulo
     template_name = "Home/art_create.html"
-    success_url = reverse_lazy('ArtDetail')
+    success_url = reverse_lazy('home')
     fields = ['titulo', 'subtitulo', 'contenido', 'imagen']
     
     sw_t1 = 'Editar artículo'
@@ -81,7 +81,6 @@ def art_list(request):
 
 def art_search_title(request):
     titulo = request.GET.get('titulo', None)
-    print(titulo)
     if titulo:
         articulos = models.Articulo.objects.filter(titulo__icontains=titulo).order_by('-id')
     else:
@@ -99,7 +98,6 @@ def art_search_title(request):
 
 def art_list_author(request,pk):
     autor = pk
-    print(autor)
     articulos = models.Articulo.objects.filter(autor=autor).order_by('-id')
     articulo = articulos[0]
     print(articulo)
@@ -117,3 +115,43 @@ def my_arts(request):
     sw_t1 = 'Mis publicaciones'
     sw_st1 = f'Listado de todos los artículos publicados por: {autor}' 
     return render(request, 'Home/art_list.html', { 'articulos' : articulos , 'sw_t1' : sw_t1 , 'sw_st1' : sw_st1 })
+
+def authors_list(request):
+    usuarios = User.objects.all()
+    autores = []
+    
+    for usuario in usuarios:
+        autor = usuario.id
+        name = usuario.username
+        articulos = models.Articulo.objects.filter(autor=autor).order_by('-id')
+        if articulos:
+            articulo = articulos[0]
+        else:
+            articulo = 0
+        cantidad = len(articulos)
+        autores.append([name, cantidad, articulo])
+    
+    autores.sort(key=lambda item: item[1], reverse=True)
+    
+    autores_col1 = []
+    autores_col2 = []
+    autores_nr = len(autores)
+    while autores_nr !=0:
+        if autores == []:
+            break
+        else:
+            autores_col1.append(autores.pop(0))
+        if autores == []:
+            break
+        else:    
+            autores_col2.append(autores.pop(0))
+        autores_nr -= 1
+    
+    autores = [autores_col1, autores_col2]
+    
+    contexto = {}
+    contexto['sw_t1'] = 'Autores'
+    contexto['sw_st1'] = f'Listado de todos usuarios registrados y sus artículos publicados.'
+    contexto['autores'] = autores
+    
+    return render(request, 'Home/author_list.html', contexto)
